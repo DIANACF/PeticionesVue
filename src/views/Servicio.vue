@@ -57,12 +57,32 @@ function eliminar (id: number){
     
 }
 
+var info = {title: 'producto',
+    price: 13.5,
+    description: 'lorem ipsum set',
+    image: 'https://i.pravatar.cc',
+    category: 'electronic'};
+
+function agregar(){
+    axios.post('https://fakestoreapi.com/products', info)
+    .then(response =>{
+        console.log(response);
+        alert('Se ha agregado el producto correctamente');
+    })
+    .catch(error => {
+        console.log(error);
+        alert('Error al agregar un producto');
+    })
+
+}
+
 
 
 
  
 </script>
 <template>
+    <button style="width: 85px; height: 60px; margin: 5px;" @click="agregar">Agregar Producto</button>
     <div v-for="item of products">
         <img :src="item.image" alt="Producto">
         <button @click="eliminar (item.id)">Eliminar</button>
